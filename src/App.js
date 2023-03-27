@@ -25,6 +25,9 @@ export const App = () => {
   let [noMovingScenario, setData] = useState("");
   let [timer, setTimer] = useState("");
 
+
+  const bestScore = localStorage.getItem("bestScore")
+
   //Win context
   const { win: [userWin, setWin], isWined: [wined, setWined] } = useContext(StoreContext)
 
@@ -67,7 +70,6 @@ export const App = () => {
 
 
   useEffect(() => {
-    //debugger
     let arr = [...array];
 
     //window event key catching
@@ -93,7 +95,10 @@ export const App = () => {
 
     //Game over condition
     if (checkGameOver) {
-      setGameOver(gameOverFunc(arr));
+      setGameOver(() => gameOverFunc(arr));
+      if (score > bestScore) {
+        localStorage.setItem("bestScore", score);
+      }
     }
 
     //Move actions
@@ -124,6 +129,7 @@ export const App = () => {
 
 
 
+
   if (sum === 0) {
     let restartArray = restart(emptyArr, 0);
     setArr(restartArray)
@@ -139,9 +145,15 @@ export const App = () => {
             <div>
               <h1 className="title">2048</h1>
             </div>
-            <div className="score_button">
-              <span>score</span>
-              <h4 className="score_number">{score}</h4>
+            <div className="top__wrapper">
+              <div className="score_button">
+                <span>best</span>
+                <h4 className="score_number">{bestScore}</h4>
+              </div>
+              <div className="score_button">
+                <span>score</span>
+                <h4 className="score_number">{score}</h4>
+              </div>
             </div>
           </div>
           <button className="restart" onClick={() => restart(emptyArr, 0)}>New game</button>

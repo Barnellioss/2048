@@ -4,6 +4,12 @@ export const emptyArr = [[{ score: "", class: "" }, { score: "", class: "" }, { 
 [{ score: "", class: "" }, { score: "", class: "" }, { score: "", class: "" }, { score: "", class: "" }]
 ];
 
+/*export const emptyArr = [[{ score: 2, class: "" }, { score: 128, class: "" }, { score: 64, class: "" }, { score: 128, class: "" }],
+[{ score: 8, class: "" }, { score: 4, class: "" }, { score: 256, class: "" }, { score: 512, class: "" }],
+[{ score: 4, class: "" }, { score: 2, class: "" }, { score: 128, class: "" }, { score: 512, class: "" }],
+[{ score: 8, class: "" }, { score: 4, class: "" }, { score: 32, class: "" }, { score: 16, class: "" }]
+];*/
+
 export const move = [["d", "ArrowRight"], ["a", "ArrowLeft"], ["w", "ArrowUp"], ["s", "ArrowDown"]];
 
 export const classStyles = [

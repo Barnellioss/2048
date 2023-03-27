@@ -267,11 +267,19 @@ body {
   padding: 10px;
 }
 
-.buttons__wrapper {
+.buttons__wrapper, .top__wrapper {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   width: 100%;
+}
+
+.top__wrapper{
+  justify-content: flex-end;
+}
+
+.top__wrapper .score_button:first-child{
+  margin-right: 20px;
 }
 
 
