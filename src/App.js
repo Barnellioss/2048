@@ -26,7 +26,9 @@ export const App = () => {
   let [timer, setTimer] = useState("");
 
 
-  const bestScore = localStorage.getItem("bestScore")
+  //Get item from local storage 
+  let bestScore = localStorage.getItem("bestScore")
+
 
   //Win context
   const { win: [userWin, setWin], isWined: [wined, setWined] } = useContext(StoreContext)
@@ -96,9 +98,6 @@ export const App = () => {
     //Game over condition
     if (checkGameOver) {
       setGameOver(() => gameOverFunc(arr));
-      if (score > bestScore) {
-        localStorage.setItem("bestScore", score);
-      }
     }
 
     //Move actions
@@ -111,6 +110,9 @@ export const App = () => {
         setGameOver(gameOver);
         setArr(resArray);
         setScore(resScore);
+        if(bestScore < resScore){
+          localStorage.setItem("bestScore", resScore);
+        }
         setData("");
       }
       else setData(key);
@@ -134,6 +136,11 @@ export const App = () => {
     let restartArray = restart(emptyArr, 0);
     setArr(restartArray)
   }
+
+  if(typeof bestScore === "object"){
+    localStorage.setItem("bestScore", 0);
+  }
+
 
 
   return (
